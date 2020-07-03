@@ -1,1 +1,14 @@
+.rm-characters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
+.characters {
+  width: 225px;
+  margin: 15px auto;
+}
+
+img {
+  height: 200px;
+}
