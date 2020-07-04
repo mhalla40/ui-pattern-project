@@ -1,10 +1,17 @@
+h1 {
+  background-color: black;
+  color: white;
+  height: 50px;
+}
+
 .rm-characters {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 50px;
 }
 
-.characters {
+.character {
   width: 225px;
   margin: 15px auto;
 }
