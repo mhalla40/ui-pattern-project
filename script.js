@@ -6,6 +6,8 @@ let form = document.querySelector("form");
 let character = document.querySelectorAll(".character");
 let popUp = document.querySelector(".pop-up");
 
+let closeButton = document.querySelector(".close");
+
 fetch(url)
   .then((res) => res.json())
   .then((convertedResponse) => {
@@ -27,14 +29,21 @@ fetch(url)
 
       let location = convertedResponse.results[i].location;
 
-      popUp.innerText = `Name : ${name} | Status : ${status} | Species : ${species} | Type : ${type} | Gender : ${gender} | Location : ${location}`;
-
       img[i].addEventListener("click", openPopUp);
+      closeButton.addEventListener("click", closePopUp);
 
       function openPopUp(e) {
         e.preventDefault();
-        console.log(e);
-        popUp.style.opacity = 1;
+        popUp.innerText = `Name : ${name} | Status : ${status} | Species : ${species} | Type : ${type} | Gender : ${gender} | Location : ${location} | Image :
+        ${img[i]}`;
+
+        popUp.style.opacity = 0.75;
+        closeButton.style.opacity = 1;
+      }
+
+      function closePopUp() {
+        popUp.style.opacity = 0;
+        closeButton.style.opacity = 0;
       }
     }
   });
