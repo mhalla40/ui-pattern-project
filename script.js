@@ -1,77 +1,40 @@
-var characters = [
-  {
-    name: "Rick Sanchez",
-    species: "Human",
-    status: "Alive",
-  },
-  {
-    name: "Morty Smith",
-    species: "Human",
-    status: "Alive",
-  },
-  {
-    name: "Summer Smith",
-    species: "Human",
-    status: "Alive",
-  },
-  {
-    name: "Beth Smith",
-    species: "Human",
-    status: "Alive",
-  },
-  {
-    name: "Jerry Smith",
-    species: "Human",
-    status: "Alive",
-  },
-  {
-    name: "Abadango Cluster Princess",
-    species: "Alien",
-    status: "Alive",
-  },
-  {
-    name: "Abradolf Lincler",
-    species: "Human",
-    status: "unknown",
-  },
-  {
-    name: "Adjudicator Rick",
-    species: "Human",
-    status: "Dead",
-  },
-  {
-    name: "Agency Director",
-    species: "Human",
-    status: "Dead",
-  },
-  {
-    name: "Alan Rails",
-    species: "Human",
-    status: "Dead",
-  },
-  {
-    name: "Albert Einstein",
-    species: "Human",
-    status: "Dead",
-  },
-  {
-    name: "Alexander",
-    species: "Human",
-    status: "Dead",
-  },
-  {
-    name: "Alien Googah",
-    species: "Alien",
-    status: "unknown",
-  },
-  {
-    name: "Alien Morty",
-    species: "Alien",
-    status: "unknown",
-  },
-  {
-    name: "Alien Rick",
-    species: "Alien",
-    status: "unknown",
-  },
-];
+const url = "https://rickandmortyapi.com/api/character";
+
+let img = document.querySelectorAll("img");
+let form = document.querySelector("form");
+
+let character = document.querySelectorAll(".character");
+let popUp = document.querySelector(".pop-up");
+
+fetch(url)
+  .then((res) => res.json())
+  .then((convertedResponse) => {
+    console.log(convertedResponse);
+    console.log(convertedResponse.results[0].image);
+
+    for (i = 0; i < img.length; i++) {
+      img[i].src = convertedResponse.results[i].image;
+      console.log(img);
+      let name = convertedResponse.results[i].name;
+
+      let status = convertedResponse.results[i].status;
+
+      let species = convertedResponse.results[i].species;
+
+      let type = convertedResponse.results[i].type;
+
+      let gender = convertedResponse.results[i].gender;
+
+      let location = convertedResponse.results[i].location;
+
+      popUp.innerText = `Name : ${name} | Status : ${status} | Species : ${species} | Type : ${type} | Gender : ${gender} | Location : ${location}`;
+
+      img[i].addEventListener("click", openPopUp);
+
+      function openPopUp(e) {
+        e.preventDefault();
+        console.log(e);
+        popUp.style.opacity = 1;
+      }
+    }
+  });
