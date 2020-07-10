@@ -52,3 +52,16 @@ img {
   font-weight: bold;
   opacity: 0;
 }
+
+@media screen and (max-width: 991.98px) {
+  .close {
+    top: 76%;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .close {
+    top: 75%;
+    right: 26%;
+  }
+}

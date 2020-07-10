@@ -41,6 +41,10 @@ fetch(url)
         closeButton.style.opacity = 1;
       }
 
+      function refreshPage() {
+        window.location.reload();
+      }
+
       function closePopUp() {
         popUp.style.opacity = 0;
         closeButton.style.opacity = 0;
